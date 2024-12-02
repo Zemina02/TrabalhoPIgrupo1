@@ -8,7 +8,7 @@ typedef struct
 	int capacidadeDoEstadio;
 	int numerodesocios;
 	float fundosdoclube;
-	float despesasMensaisdeManutençaodoEstadio;
+	float despesasMensaisdeManutenÃ§aodoEstadio;
 	struct tabeladeResultados {
 		int numerodeJogos;
 		int numerodeVitorias;
@@ -21,10 +21,11 @@ typedef struct
 		char treinador[20];
 		struct jogadores {
 			char nome[30];
+			int numero;
 			float vencimento;
 			int datadoIniciodoContrato[3];
 			int anosdoContrato;
-			int forçadoJogador[4];
+			int forÃ§adoJogador[4];
 		};
 	};
 } dados;
