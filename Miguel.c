@@ -4,68 +4,74 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct {
-    char equipa[15];
-    char estadio[30];
-    int capacidadeDoEstadio;
-    int numerodesocios;
-    float fundosdoclube;
-    float despesasMensaisdeManutençaodoEstadio;
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+// Definição da estrutura de dados
+typedef struct
+{
+	char equipa[15];
+	char estadio[30];
+	int capacidadeDoEstadio;
+	int numerodesocios;
+	float fundosdoclube;
+	float despesasMensaisdeManutençaodoEstadio;
 } dadosdasequipas;
 
-typedef struct {
-    char nome[30];
-    int numero;
-    float vencimento;
-    int datadoIniciodoContrato[3];
-    int anosdoContrato;
-    char posicaojogador[15];
-    int força;
+typedef struct
+{
+	char nome[30];
+	int numero;
+	float vencimento;
+	int datadoIniciodoContrato[3];
+	int anosdoContrato;
+	char posicaojogador[15];
+	int força;
 } jogadores;
 
-int main() {
-    setlocale(LC_ALL, "Portuguese");
+int main()
+{
+	// cria treinadores para cada equipa
+	char treinador[18][15];
+	// cria dados para 18 equipas e jogadores para cada
+	dadosdasequipas equipasEDados[18];
+	jogadores jogadoresPorEquipa[18][20];
 
-    // cria treinadores para cada equipa
-    char treinador[18][15];
-    // cria dados para 18 equipas e jogadores para cada
-    dadosdasequipas equipasEDados[18];
-    jogadores jogadoresPorEquipa[18][20]; // 20 jogadores por equipa
+	// Abre o ficheiro "Equipas2"
+	FILE* equipas = fopen("Equipas3.txt", "r");
+	if (equipas == NULL)
+	{
+		printf("Não foi possível abrir o ficheiro.\n");
+		return 1;
+	}
 
-    // Abre o ficheiro "Equipas.txt"
-    FILE* equipas = fopen("Equipas.txt", "r");
-    if (equipas == NULL) {
-        printf("Não foi possível abrir o ficheiro.\n");
-        return 1;
-    }
+	int equipaCount = 0;
+	int jogadorinos = 20;
+	char line[50];
+	int i = 0;
 
-    // Lê as linhas do arquivo e guarda no local correto
-    int equipaCount = 0;
-    char line[50];
+	// Lê as linhas do arquivo e guarda no local correto
+	while (equipaCount < 18)
+	{
+		// Ler treinador e equipa
+		fgets(line, sizeof(line), equipas);
+		sscanf(line,"%[^\n]",treinador[equipaCount]);
+		fgets(line, sizeof(line), equipas);
+		sscanf(line,"%[^\n]",equipasEDados[equipaCount].equipa);
+		// Ler 20 jogadores
+		for (i; i < jogadorinos; i++)
+		{
+			fgets(line, sizeof(line), equipas);
+			sscanf(line, "%[^;];%d;%[^;];%d",jogadoresPorEquipa[equipaCount][i].nome, &jogadoresPorEquipa[equipaCount][i].numero, jogadoresPorEquipa[equipaCount][i].posicaojogador, &jogadoresPorEquipa[equipaCount][i].força);
+		}
+		equipaCount++;
+		jogadorinos += 20;
+	}
 
-    // Ler treinador e equipa
-    while (equipaCount < 18 && fgets(line, sizeof(line), equipas) != NULL) {
-        sscanf(line, "%[^\n]", treinador[equipaCount]);
-
-        if (fgets(line, sizeof(line), equipas) != NULL) {
-            sscanf(line, "%[^\n]", equipasEDados[equipaCount].equipa);
-        }
-
-        // Ler 20 jogadores
-        for (int j = 0; j < 20; j++) {
-            if (fgets(line, sizeof(line), equipas) != NULL) {
-                sscanf(line, "%[^;];%d;%[^;];%d",
-                    jogadoresPorEquipa[equipaCount][j].nome,
-                    &jogadoresPorEquipa[equipaCount][j].numero,
-                    jogadoresPorEquipa[equipaCount][j].posicaojogador,
-                    &jogadoresPorEquipa[equipaCount][j].força);
-            }
-        }
-        equipaCount++;
-    }
-
-    fclose(equipas);
-
+	fclose(equipas);
+	return 0;
+}
     // Mostra a Lista das Equipas
     printf("Selecione uma equipa:\n");
     for (int i = 0; i < equipaCount; i++) {
