@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// Definição da estrutura de dados
+// DefiniÃ§Ã£o da estrutura de dados
 typedef struct
 {
 	char equipa[15];
@@ -10,7 +10,7 @@ typedef struct
 	int capacidadeDoEstadio;
 	int numerodesocios;
 	float fundosdoclube;
-	float despesasMensaisdeManutençaodoEstadio;
+	float despesasMensaisdeManutenÃ§aodoEstadio;
 } dadosdasequipas;
 
 typedef struct
@@ -21,22 +21,22 @@ typedef struct
 	int datadoIniciodoContrato[3];
 	int anosdoContrato;
 	char posicaojogador[15];
-	int força;
+	int forÃ§a;
 } jogadores;
 
 int main()
 {
 	// cria treinadores para cada equipa
-	char treinador[17][15];
+	char treinador[18][15];
 	// cria dados para 18 equipas e jogadores para cada
 	dadosdasequipas equipasEDados[18];
-	jogadores jogadores[360];
+	jogadores jogadoresPorEquipa[18][20];
 
 	// Abre o ficheiro "Equipas2"
 	FILE* equipas = fopen("Equipas3.txt", "r");
 	if (equipas == NULL)
 	{
-		printf("Não foi possível abrir o ficheiro.\n");
+		printf("NÃ£o foi possÃ­vel abrir o ficheiro.\n");
 		return 1;
 	}
 
@@ -45,7 +45,7 @@ int main()
 	char line[50];
 	int i = 0;
 
-	// Lê as linhas do arquivo e guarda no local correto
+	// LÃª as linhas do arquivo e guarda no local correto
 	while (equipaCount < 18)
 	{
 		// Ler treinador e equipa
@@ -57,14 +57,80 @@ int main()
 		for (i; i < jogadorinos; i++)
 		{
 			fgets(line, sizeof(line), equipas);
-			sscanf(line, "%[^;];%d;%[^;];%d",jogadores[i].nome,&jogadores[i].numero,jogadores[i].posicaojogador,&jogadores[i].força);
+			sscanf(line, "%[^;];%d;%[^;];%d",jogadoresPorEquipa[equipaCount][i].nome, &jogadoresPorEquipa[equipaCount][i].numero, jogadoresPorEquipa[equipaCount][i].posicaojogador, &jogadoresPorEquipa[equipaCount][i].forÃ§a);
 		}
 		equipaCount++;
 		jogadorinos += 20;
 	}
 
 	fclose(equipas);
+}
 
-	printf("%i", jogadores[21].numero);
-	return 0;
+//FunÃ§oes utilizadas durante um jogo
+int calcularPoderAtaque(jogadores equipa[NUM_JOGADORES]) 
+{
+	int poderAtaque = 0;
+	for (int i = 0; i < NUM_JOGADORES; i++) {
+		if (strcmp(equipa[i].posicaojogador, "Avancado") == 0 ||
+			strcmp(equipa[i].posicaojogador, "Meio-campo") == 0) {
+			poderAtaque += equipa[i].forca;
+		}
+	}
+	return poderAtaque;
+}
+
+int calcularPoderDefesa(jogadores equipa[NUM_JOGADORES]) 
+{
+	int poderDefesa = 0;
+	for (int i = 0; i < NUM_JOGADORES; i++) {
+		if (strcmp(equipa[i].posicaojogador, "Defesa") == 0 ||
+			strcmp(equipa[i].posicaojogador, "Guarda-redes") == 0) {
+			poderDefesa += equipa[i].forca;
+		}
+	}
+	return poderDefesa;
+}
+
+float gerarFatorAleatorio() 
+{
+	srand(time(NULL));
+	return (rand() % 1001) / 1000.0; // Gera um nÃºmero entre 0.0 e 1.0
+}
+
+const char* determinarLocalPerdaBola() 
+{
+	int random = rand() % 3;
+	switch (random) {
+	case 0:
+		return "Defesa";
+	case 1:
+		return "Meio-campo";
+	case 2:
+		return "Ataque";
+	default:
+		return "Desconhecido";
+	}
+}
+
+void gerirAtaque(jogadores equipa[NUM_JOGADORES], jogadores adversarios[NUM_JOGADORES], int tempoRestante) 
+{
+	int poderAtaque = calcularPoderAtaque(equipa);
+	int poderDefesaAdversaria = calcularPoderDefesa(adversarios);
+	float fatorAleatorio = gerarFatorAleatorio();
+
+	printf("Poder de Ataque: %d\n", poderAtaque);
+	printf("Poder de Defesa do AdversÃ¡rio: %d\n", poderDefesaAdversaria);
+	printf("Fator AleatÃ³rio: %.2f\n", fatorAleatorio);
+
+	int resultado = (poderAtaque * fatorAleatorio) - poderDefesaAdversaria;
+
+	if (resultado > 0) {
+		printf("Ataque bem-sucedido! Gol marcado.\n");
+	}
+	else {
+		const char* localPerda = determinarLocalPerdaBola();
+		printf("Ataque falhou. Perda de bola na zona: %s.\n", localPerda);
+	}
+
+	printf("Tempo restante do jogo: %d minutos.\n", tempoRestante);
 }
