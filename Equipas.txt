@@ -1,0 +1,396 @@
+Joao Pereira
+Sporting
+Vladan Kovacevic;13;Guarda-Redes;1
+Diego Callai;41;Guarda-Redes;1
+Zeno Debaste;6;Defesa;1
+Goncalo Inacio;25;Defesa;1
+Ousmane Diomande;26;Defesa;1
+Jerry St. Juste;3;Defesa;1
+Matheus Reis;2;Defesa;1
+Ricardo Esgaio;47;Defesa;1
+Ivan Fresneda;22;Defesa;1
+Morten Hjulmand;42;Medio;1
+Daniel Braganca;23;Medio;1
+Joao Simoes;52;Medio;1
+Hidemasa Morita;5;Medio;1
+Maxi Araujo;20;Avancado;1
+Geny Catamo;21;Avancado;1
+Geovany Quenda;57;Avancado;1
+Marcus Edwars;10;Avancado;1
+Trincao;17;Avancado;1
+Viktor Gyokeres;9;Avancado;1
+Conrad Harder;19;Avancado;1
+Bruno Lage
+SLBenfica
+Anatoly Trubin;1;Guarda-Redes;1
+Samuel Soares;24;Guarda-Redes;1
+Nicolas Otamendi;30;Defesa;1
+Tomas Araujo;44;Defesa;1
+Antonio Silva;4;Defesa;1
+Alvaro Carreras;3;Defesa;1
+Alexandre Bah;6;Defesa;1
+Issa Kabore;28;Defesa;1
+Leandro Barreiro;18;Medio;1
+Fredrik Aursnes;8;Medio;1
+Orkun kokcu;10;Medio;1
+Jan-Niklas Beste;37;Medio;1
+Florentino;61;Medio;1
+Kerem akturkoglu;17;Avancado;1
+Andreas Schjelderup;21;Avancado;1
+Angel Di Maria;11;Acancado;1
+Benjamin Rollheiser;32;Avancado;1
+Aerthur Cabral;9;Avancado;1
+Zeki Amdouni;7;Avancado;1
+Vangelis Pavlidis;14;Avancado;1
+Vitor Bruno
+FCPorto
+Diogo Costa;99;Guarda-Redes;1
+Claudio Ramos;14;Guarda-Redes;1
+Tiago Djalo;3;Defesa;1
+Nehuen Perez;24;Defesa;1
+Otavio;4;Defesa;1
+Francisco Moura;74;Defesa;1
+Joao Mario;23;Defesa;1
+Martim Fernandes;52;Defesa;1
+Nico Gonzales;16;Medio;1
+Vasco Sousa;15;Medio;1
+Stephen Eustaquio;6;Medio;1
+Rodrigo Moura;86;Medio;1
+Fabio Vieira;10;Medio;1
+Ivan Jaime;17;Medio;1
+Galeno;13;Avancado;1
+Pepe;11;Avancado;1
+Goncalo Borges;70;Avancado;1
+Deniz Gul;27;Avancado;1
+Danny Namaso;19;Avancado;1
+Samu Aghehowa;9;Avancado;1
+Carlos Carvalhal
+SCBraga
+Matheus;1;Guarda-Redes;1
+Lukas Hornicek;3;Guarda-Redes;1
+Sikou Niakate;4;Defesa;1
+Bright Arrey-Mbi;26;Defesa;1
+Robson bambum;3;Defesa;1
+Yuri Ribeiro;25;Defesa;1
+Joao Ferreira;13;Defesa;1
+Victor Gomez;2;Defesa;1
+Gorby;29;Medio;1
+Andre Horta;10;Medio;1
+Joao Moutinho;8;Medio;1
+Vitor Carvalho;6;Medio;1
+Gabri Martinez;77;Avancado;1
+Joao Marques;33;Avancado;1
+Ismael Gharbi;20;Avancado;1
+Ricardo Horta;21;Avancado;1
+Bruma;7;Avancado;1
+Roger;11;Avancado;1
+Amine El Ouazzani;9;Avancado;1
+Roberto Fernandez;90;Avancado;1
+Vasco Matos
+Santa Clara
+Gabriel Batista;1;Guarda-Redes;1
+Neneca;12;Guarda-Redes;1
+Luis Rocha;13;Defesa;1
+Frederico Venancio;21;Defesa;1
+Gui Ramos;27;Defesa;1
+Habraao;28;Defesa;1
+MT;32;Defesa;1
+Matheus Pereira;3;Defesa;1
+Calila;2;Defesa;1
+Serginho;35;Defesa;1
+Lucas Soares;42;Defesa;1
+Klismahn;77;Medio;1
+Dani Broges;41;Medio;1
+Adriano Firmino;6;Medio;1
+Pedro Ferreira;8;Medio;1
+Bruno Almeida;19;Avancado;1
+Alisson Safira;9;Avancado;1
+Vinicius Lopes;70;Avancado;1
+Joao Costa;17;Avancado;1
+Gustavo Veiga;73;Avancado;1
+Rui Borges
+Vitoria SC
+Bruno Varela;14;Guarda-Redes;1
+Charles;27;Guarda-Redes;1
+Jorge Fernandes;44;Defesa;1
+Toni Borevkovic;24;Defesa;1
+Oscar Rivas;15;Defesa;1
+Joao Mendes;13;Defesa;1
+Ze Carlos;28;Defesa;1
+Bruno Gaspar;76;Defesa;1
+Alberto Costa;22;Defesa;1
+Tomás Handel;8;Medio;1
+Manu;6;Medio;1
+Joao Mendes;17;Medio;1
+Telmo Arcanjo;18;Medio;1
+Samu;20;Medio;1
+Nuno Santos;77;Medio;1
+Gustavo Silva;71;Avancado;1
+Kaio Cesar;11;Avancado;1
+Jesus Ramirez;9;Avancado;1
+Bica;79;Avancado;1
+Nelson Oliveira;7;Avancado;1
+Joao Pereira
+Casa Pia AC
+Patrick Sequeira;1;Guarda-Redes;1
+Ricardo Batista;33;Guarda-Redes;1
+Nermin Zolotic;19;Defesa;1
+Ruben Kluivert;3;Defesa;1
+Tchamba;2;Defesa;1
+Joao Goulart;4;Defesa;1
+Leonardo Lelo;5;Defesa;1
+Fahem Benaissa-Yahia;12;Defesa;1
+Gaizka Larrazabal;72;Defesa;1
+Andre Geraldes;18;Defesa;1
+Andrian Kraev;89;Medio;1
+Beni;16;Medio;1
+Rafael Brito;17;Medio;1
+Telasco Segovia;8;Medio;1
+Miguel Sousa;14;Medio;1
+Henrique Pereira;52;Avancado;1
+Jeremy Liovlant;29;Avancado;1
+Nuno Moreira;7;Avancado;1
+Max Svensson;9;Avancado;1
+Cassiano;90;Avancado;1
+Armando Evangelista
+FCFamalicao
+Lazar Carevic;25;Guarda-Redes;1
+Ivan Zlobin;1;Guarda-Redes;1
+Enea Mihaj;4;Defesa;1
+Riccieli;15;Defesa;1
+Justin de Haas;16;Defesa;1
+Rafa Soares;5;Defesa;1
+Diogo Costa;75;Defesa;1
+Calegari;2;Defesa;1
+Rodrigo Pinheiro;1;Defesa;1
+Tom van de Looi;6;Medio;1
+Zaydou Youssouf;28;Medio;1
+Samuel Lobato;88;Medio;1
+Mathias de Amorim;14;Medio;1
+Gustavo Sa;20;Medio;1
+Otso Liimatta;18;Medio;1
+Rochinha;10;Avancado;1 
+Oscar Aranda;11;Avancado;1
+Gil Dias;22;Avancado;1
+Mario Gonzalez;9;Avancado;1
+Leonardo Oliveira;85;Avancado;1
+Bruno Pinheiro
+Gil Vicente FC
+Andrew;42;Guarda-Redes;1
+Brian Araujo;99;Guarda-Redes;1
+Marvin Elimbi;4;Defesa;1
+Jonathan Buatu;39;Defesa;1
+Josue Sa;23;Defesa;1
+Ruben Fernandes;26;Defesa;1
+Sandro Cruz;57;Defesa;1
+Kazu;88;Defesa;1
+Ze Carlos;2;Defesa;1
+Mory Gbane;24;Medio;1
+Jesus Castillo;6;Medio;1
+Facundo Caseres;5;Medio;1
+Kanya Fujimoto;10;Medio;1
+Joao Teixeira;18;Medio;1
+Felix Correia;71;Avancado;1
+Tidjany Toure;7;Avancado;1
+Jordi Mboula;77;Avancado;1
+Caue;20;Avancado;1
+Pablo;90;Avancado;1
+Jorge Aguirre;9;Avancado;1
+Cesar Peixoto
+Moreirense FC
+Kewin;40;Guarda-Redes;1
+Caio Secco;22;Guarda-Redes;1
+Maracas;26;Defesa;1
+Ponck;14;Defesa;1
+Gilberto Batista;66;Defesa;1
+Marcelo;44;Defesa;1
+Leonardo Buta;15;Defesa;1
+Godfried Frimpong;23;Defesa;1
+Fabiano;2;Defesa;1
+Dinis Pinto;76;Defesa;1
+Ismael;6;Medio;1
+Sidnei Tavares;5;Medio;1
+Benny;20;Medio;1
+Alan;11;Medio;1
+Madson;31;Avancado;1
+Jeremy Antonisse;10;Avancado;1
+Gabrielzinho;77;Avancado;1
+Pedro Santos;21;Avancado;1
+Luis Asue;9;Avancado;1
+Guilherme Schettine;95;Avancado;1
+Petit
+Rio Ave FC
+Cezary Miszta;1;Guarda-Redes;1
+Jhonatan;18;Guarda-Redes;1
+Patrick William;4;Defesa;1
+Renato Pantalo;42;Defesa;1
+Aderllan Santos;33;Defesa;1
+Omar Richards;98;Defesa;1
+Joao Tome;20;Defesa;1
+Martim Neto;76;Medio;1
+Ole Pohlmann;80;Medio;1
+Ege Tiknaz;34;Medio;1
+Joao Novais;6;Medio;1
+Brandom Aguilera;16;Medio;1
+Tiago Morais;11;Avancado;1
+Tobias Medina;27;Avancado;1
+Kiko Bondoso;19;Avancado;1
+Tim Sousa;94;Avancado;1
+Marios Vrousai;17;Avancado;1
+Clayton;9;Avancado;1
+Ahmed Hassan;22;Avancado;1
+Karem Zoabi;14;Avancado;1
+Toze Marreco
+SCFarense
+Ricardo Velho;33;Guarda-Redes;1
+Kaique Pereira;1;Guarda-Redes;1
+Marco Moreno;3;Defesa;1
+Artur Jorge;4;Defesa;1
+Raul Silva;34;Defesa;1
+Lucas Africo;44;Defesa;1
+Paulo Victor;2;Defesa;1
+Derick Poloni;31;Defesa;1
+Pastor;28;Defesa;1
+Claudio Falcao;29;Medio;1
+Seruca;50;Medio;1
+Miguel Menino;93;Medio;1
+Neto;6;Medio;1
+Rafael Barbosa;8;Medio;1
+Alex Bernejo;11;Avancado;1
+Marco Matias;77;Avancado;1
+Mehdi Merghem;79;Avancado;1
+Elves Balde;7;Avancado;1
+Jaiminho;71;Avancado;1;
+Dario Poveda;14;Avancado;1
+Claudio Botelho
+Arouca
+Joao valido;1;Guarda-Redes;1
+Nico Mantl;58;Guarda-Redes;1
+Amadeu Dante;27;Defesa;1
+Chico Lamba;73;Defesa;1
+Jose Fontan;3;Defesa;1
+David Simao;5;Defesa;1
+Matias Rocha;4;Defesa;1
+Weverson;26;Defesa;1
+Alex Pinto;78;Defesa;1
+Mamadou Loum;31;Defesa;1
+Tiago Esgaio;28;Medio;1
+Morlaye Sylla;2;Medio;1
+Jason;10;Medio;1
+Taichi Fukui;21;Medio;1
+Pedro Santos;89;Medio;1
+Pablo Gozalbez;22;Medio;1
+Miguel Puche;11;Avancado;1
+Guven Yalcın;50;Avancado;1
+Ivo Rodrigues;7;Avancado;1
+Alfonso Trezza;19;Avancado;1
+Cristiano Bacci
+Boavista
+Tome Sousa;76;Guarda-Redes;1
+Cesar;1;Guarda-Redes;1
+Pedro Gomes;15;Defesa;1
+Bruno Onyemaechi;70;Defesa;1
+Rodrigo Abascal;26;Defesa;1
+Filipe Ferreira;20;Defesa;1
+Alex Marques;73;Defesa;1
+Augusto Dabo;25;Defesa;1
+Tomas Silva;75;Defesa;1
+Goncalo Miguel;35;Defesa;1
+Ilija Vukotic;18;Medio;1
+Joel Silva;16;Medio;1
+Ibrahima;2;Medio;1
+Miguel Reisinho;10;Medio;1
+Marco Ribeiro;88;Medio;1
+Robert Bozenik;9;Avancado;1
+Salvador Agra;7;Avancado;1
+Joao Barros;71;Avancado;1
+Manuel Namora;17;Avancado;1
+Tiago Machado;23;Avancado;1
+Jose Faria
+Est.Amadora
+Marko Gudzulic;93;Guarda-Redes;1
+Bruno Brigido;30;Guarda-Redes;1
+Miguel Lopes;13;Defesa;1
+Ferro;4;Defesa;1
+Ruben Lima;28;Defesa;1
+Danilo Veiga;77;Defesa;1
+Tiago Gabriel;44;Defesa;1
+Guilherme Montoia;21;Defesa;1
+Travassos;2;Defesa;1
+Nilton;25;Defesa;1
+Igor jesus;6;Medio;1
+Leu Cordeiro;22;Medio;1
+Alan Ruiz;10;Medio;1
+Leonel Bucca;26;Medio;1
+Manuel Keliano;42;Medio;1
+Paulo Moreira;19;Medio;1
+Manu;81;Avancado;1
+Kikas;98;Avancado;1
+Rodrigo Pinho;9;Avancado;1
+Jovane Cabral;97;Avancado;1
+Ian Cathro
+Estoril Praia
+Kevin Chamorro;1;Guarda-Redes;1
+Joel Robles;27;Guarda-Redes;1
+Felix Bacher;25;Defesa;1
+Pedro Alvaro;23;Defesa;1
+Kevin Boma;44;Defesa;1
+Ismael Sierra;3;Defesa;1
+Goncalo Costa;18;Defesa;1
+Pedro Carvalho;22;Defesa;1
+Wagner Pina;20;Medio;1
+Jordan Holsgrove;10;Medio;1
+Zanocelo;7;Medio;1
+Joao Carvalho;12;Medio;1
+Michel Costa;8;Medio;1
+Jandro Orellana;6;Medio;1
+Andre Lacximicant;19;Avancado;1
+Israel Salazar;92;Avancado;1
+Yanis Begraoui;14;Avancado;1
+Fabricio Garcia;17;Avancado;1
+Helder Costa;11;Avancado;1
+Alejandro Marques;9;Avancado;1
+Tiago Margarido
+Nacional
+Rui Encarnacao;1;Guarda-Redes;1
+Franca;37;Guarda-Redes;1
+Garcia;22;Defesa;1
+Ulisses;4;Defesa;1
+Ze Vitor;38;Defesa;1
+Jose Gomes;5;Defesa;1
+Leu Santos;34;Defesa;1
+Joao Aurelio;2;Defesa;1
+Dias;88;Medio;1
+Labidi;15;Medio;1
+Esteves;10;Medio;1
+Djibril Soumare;27;Medio;1
+Andre Sousa;18;Medio;1
+Daniel Penha;17;Medio;1
+Arvin Appiah;70;Avancado;1
+Isaac;23;Avancado;1
+Tiago Reis;72;Avancado;1
+Teodora;99;Avancado;1
+Butzke;9;Avancado;1
+Macedo;7;Avancado;1
+Daniel Ramos
+AFS
+Trigueira;88;Guarda-Redes;1
+Simao;93;Guarda-Redes;1
+Fernando Fonseca;2;Defesa;1
+Jorge Teixeira;5;Defesa;1
+Nacho Rodriguez;4;Defesa;1
+Rafa Rodrigues;3;Defesa;1
+Kiki;24;Defesa;1
+Baptiste Roux;6;Medio;1
+Luis Silva;7;Medio;1
+Gustavo Mendonça;23;Medio;1
+Lucas Piazon;14;Medio;1
+Jonatan Lucca;47;Medio;1
+Jaume Grau;15;Medio;1
+Tunde Akinsola;11;Avancado;1
+Yair Mena;16;Avancado;1
+Vasco Lopes;10;Avancado;1
+Rodrigo Ribeiro;20;Avancado;1
+Nene;18;Avancado;1
+Ze Luis;29;Avancado;1
+John Mercado;17;Avancado;1
