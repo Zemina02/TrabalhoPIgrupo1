@@ -115,26 +115,36 @@ void atualizarFundosPorResultado(int equipaIndex, dadosdasequipas equipasEDados[
     equipasEDados[equipaIndex].fundosdoclube += ganho;
 }
 
-// NAO ESTA FULL RA
+
 // Função para gerar um calendário de jogos
-void criarCalendario(dadosdasequipas equipasEDados[NUM_EQUIPAS]) 
+int** criarCalendario(dadosdasequipas equipasEDados[NUM_EQUIPAS]) 
 {
-    int jogosGerados = 0;
-    bool jogos[NUM_EQUIPAS][NUM_EQUIPAS] = { false }; // Matriz para verificar se um jogo já foi gerado
+    int equipasnumeros[18] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
+    int jogos[9][2]; // Matriz dos jogos
+    int equipa1 = rand() % NUM_EQUIPAS;
+    int equipa2 = rand() % NUM_EQUIPAS;
 
     printf("\nCalendario de Jogos:\n");
-    while (jogosGerados < 9) {
-        int equipa1 = rand() % NUM_EQUIPAS;
-        int equipa2 = rand() % NUM_EQUIPAS;
-
-        // Garantir que não joguem contra si mesmas e que o jogo não tenha sido gerado antes
-        if (equipa1 != equipa2 && !jogos[equipa1][equipa2]) {
-            jogos[equipa1][equipa2] = true; // Marcar o jogo como gerado
-            jogos[equipa2][equipa1] = true; // Marcar o jogo como gerado na outra direção
-            printf("Jogo %d: %s vs %s\n", jogosGerados + 1, equipasEDados[equipa1].equipa, equipasEDados[equipa2].equipa);
-            jogosGerados++;
+    for(int i = 0 ; i < 9; i++){
+        while(equipasnumeros[equipa1] == 20 || equipasnumeros[equipa1] == equipasnumeros[equipa2])
+        {
+            equipa1 = rand() % NUM_EQUIPAS;
         }
+        while(equipasnumeros[equipa2] == 20 || equipasnumeros[equipa1] == equipasnumeros[equipa2])
+        {
+            equipa2 = rand() % NUM_EQUIPAS;
+        }
+        
+        jogos[i][0] = equipa1;
+        jogos[i][1] = equipa2;
+        equipasnumeros[equipa1] = 20;
+        equipasnumeros[equipa2] = 20;
     }
+    for(int j = 0; j < 9; j++)
+    {
+        printf(" jogo numero %i : %s vs %s\n", j+1, equipasEDados[jogos[j][0]].equipa, equipasEDados[jogos[j][1]].equipa);
+    }
+    return jogos;
 }
 
 //Funçoes utilizadas durante um jogo
@@ -202,7 +212,7 @@ int gerirAtaque(jogadores equipa[NUM_JOGADORES], jogadores adversarios[NUM_JOGAD
     int fatorAleatorio = gerarFatorAleatorio();
     if (Suprise == true)
     {
-        int fatorAleatorio = gerarFatorContraatake(position);
+        int fatorAleatorio = gerarFatorContraatake(*position);
     }
 
     printf("Poder de Ataque: %d\n", poderAtaque);
