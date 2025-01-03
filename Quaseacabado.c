@@ -483,6 +483,14 @@ int escolherTatica(jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES], dad
 	return 0; // Retorna 0 para indicar sucesso
 }
 
+// Função para perguntar ao usuário se deseja mudar a tática
+int perguntarMudancaTatica() {
+	char resposta;
+	printf("Deseja mudar a tática? (s/n): ");
+	scanf(" %c", &resposta);
+	return (resposta == 's' || resposta == 'S') ? 1 : 0; // Retorna 1 se sim, 0 se não
+}
+
 //Função para simular jogo
 int* simularJogo(dadosdasequipas equipasEDados[NUM_EQUIPAS], jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES], int equipaSelecionada, int equipaAdversaria) {
 
@@ -715,9 +723,12 @@ int main() {
 		}
 
 		// Simular jogos para a segunda jornada
-		printf("\nSegunda Jornada-----------------------------------------------------------------------------------");
+		printf("\nSegunda Jornada------------------------------------------------------");
 		for (int c = 0; c < 9; c++) {
 			if (segundojogos[c][0] == equipaSelecionada) {
+				if (perguntarMudancaTatica()) {
+					escolherTatica(jogadoresPorEquipa, equipasEDados, equipaSelecionada);
+				}
 				int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, segundojogos[c][1]);
 				tabela.numerodejogos++;
 				tabela.numerodegolos += *resultados;
@@ -733,6 +744,9 @@ int main() {
 				}
 			}
 			else if (segundojogos[c][1] == equipaSelecionada) {
+				if (perguntarMudancaTatica()) {
+					escolherTatica(jogadoresPorEquipa, equipasEDados, equipaSelecionada);
+				}
 				int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, segundojogos[c][0]);
 				tabela.numerodejogos++;
 				tabela.numerodegolos += *resultados;
@@ -750,9 +764,12 @@ int main() {
 		}
 
 		// Simular jogos para a terceira jornada
-		printf("\nTerceira Jornada-----------------------------------------------------------------------------------");
+		printf("\nTerceira Jornada------------------------------------------------------");
 		for (int c = 0; c < 9; c++) {
 			if (terceirojogos[c][0] == equipaSelecionada) {
+				if (perguntarMudancaTatica()) {
+					escolherTatica(jogadoresPorEquipa, equipasEDados, equipaSelecionada);
+				}
 				int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, terceirojogos[c][1]);
 				tabela.numerodejogos++;
 				tabela.numerodegolos += *resultados;
@@ -768,6 +785,9 @@ int main() {
 				}
 			}
 			else if (terceirojogos[c][1] == equipaSelecionada) {
+				if (perguntarMudancaTatica()) {
+					escolherTatica(jogadoresPorEquipa, equipasEDados, equipaSelecionada);
+				}
 				int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, terceirojogos[c][0]);
 				tabela.numerodejogos++;
 				tabela.numerodegolos += *resultados;
@@ -789,6 +809,7 @@ int main() {
 
 		// Permitir ao usuário comprar jogadores após a terceira jornada
 		comprarJogadores(equipasEDados, jogadoresPorEquipa, equipaSelecionada);
+
 
 
 		// Pergunta ao jogador se deseja criar um novo calendário ou sair
