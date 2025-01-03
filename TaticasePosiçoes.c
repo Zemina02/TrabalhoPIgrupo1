@@ -2,6 +2,8 @@
 void resetarPosicoes(jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES]) {
     for (int i = 0; i < NUM_EQUIPAS; i++) {
         for (int j = 0; j < NUM_JOGADORES; j++) {
+            // Armazena a posição atual em posicaoIdeal antes de resetar
+            strcpy(jogadoresPorEquipa[i][j].posicaoIdeal, jogadoresPorEquipa[i][j].posicaojogador);
             strcpy(jogadoresPorEquipa[i][j].posicaojogador, ""); // Reseta a posição para uma string vazia
         }
     }
@@ -14,12 +16,12 @@ void posicionarJogadores(jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES
 
         // Mostra os jogadores disponíveis para a posição
         printf("\nJogadores disponíveis:\n");
-        printf("%-30s %-15s\n", "Nome", "Posição Ideal"); // cabeçalho
+        printf("%-30s %-15s\n", "Nome", "Posição Ideal"); // Alterado para mostrar "Posição Ideal"
         printf("-----------------------------------------------\n");
         for (int j = 0; j < NUM_JOGADORES; j++) {
             // Exibe apenas jogadores que não estão posicionados
             if (strcmp(jogadoresPorEquipa[equipaSelecionada][j].posicaojogador, "") == 0) {
-                printf("%-30s %-15s\n", jogadoresPorEquipa[equipaSelecionada][j].nome, jogadoresPorEquipa[equipaSelecionada][j].posicaoIdeal);
+                printf("%-30s %-15s\n", jogadoresPorEquipa[equipaSelecionada][j].nome, jogadoresPorEquipa[equipaSelecionada][j].posicaoIdeal); // Exibe a posição ideal
             }
         }
 
@@ -67,9 +69,7 @@ void posicionarJogadores(jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES
     }
 }
 
-// Função para escolher a tática e posicionar jogadores
 int escolherTatica(jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES], dadosdasequipas equipasEDados[NUM_EQUIPAS], int equipaSelecionada) {
-    
     // Resetar as posições dos jogadores
     resetarPosicoes(jogadoresPorEquipa);
 
@@ -112,13 +112,13 @@ int escolherTatica(jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES], dad
 
     // Mostra os jogadores disponíveis e suas posições ideais
     printf("\nJogadores disponíveis para posicionamento:\n");
-    printf("%-30s %-10s %-15s\n", "Nome", "Número", "Posição Ideal"); // cabeçalho
+    printf("%-30s %-15s\n", "Nome", "Posição Ideal"); // cabeçalho alterado
     printf("-------------------------------------------------------------\n");
 
     for (int i = 0; i < NUM_JOGADORES; i++) {
         // Exibe apenas jogadores que não estão posicionados
         if (strcmp(jogadoresPorEquipa[equipaSelecionada][i].posicaojogador, "") == 0) {
-            printf("%-30s %-10d %-15s\n", jogadoresPorEquipa[equipaSelecionada][i].nome, jogadoresPorEquipa[equipaSelecionada][i].numero, jogadoresPorEquipa[equipaSelecionada][i].posicaoIdeal);
+            printf("%-30s %-15s\n", jogadoresPorEquipa[equipaSelecionada][i].nome, jogadoresPorEquipa[equipaSelecionada][i].posicaoIdeal); // Exibe a posição ideal
         }
     }
 
@@ -139,11 +139,32 @@ int escolherTatica(jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES], dad
 }
 
 //na main
-        //Escolher a tática antes de simular o jogo
-        int resultadoEscolha;
-        do {
-            resultadoEscolha = escolherTatica(jogadoresPorEquipa, equipasEDados, equipaSelecionada);
-            if (resultadoEscolha != 0) {
-                printf("Caracter inválido. Tente novamente.\n");
-            }
-        } while (resultadoEscolha != 0); // Continua pedindo até que a escolha seja válida
+    // Chama a função para mostrar as equipas e captura o índice da equipa selecionada
+    int equipaSelecionada = mostrarEquipas(treinador, equipasEDados, jogadoresPorEquipa, NUM_EQUIPAS);
+
+    // Criar as jornadas automaticamente após a seleção da equipa
+    printf("Pressione Enter para criar o calendário de jogos...\n");
+    getchar(); // Espera pelo input do utilizador
+    getchar(); // Captura o Enter
+    limparTela();
+
+
+    // Criar as jornadas automaticamente após a seleção da equipa
+    int** primeirosjogos = criarCalendario(equipasEDados);
+    printf("Primeira Jornada-----------------------------------------\n");
+
+    int** segundojogos = criarCalendario(equipasEDados);
+    printf("Segunda Jornada------------------------------------------\n");
+
+    int** terceirojogos = criarCalendario(equipasEDados);
+    printf("Terceira Jornada-----------------------------------------\n");
+
+
+    // Escolher a tática antes de simular o jogo
+    int resultadoEscolha;
+    do {
+        resultadoEscolha = escolherTatica(jogadoresPorEquipa, equipasEDados, equipaSelecionada);
+        if (resultadoEscolha != 0) {
+            printf("Caracter inválido. Tente novamente.\n");
+        }
+    } while (resultadoEscolha != 0); // Continua pedindo até que a escolha seja válida
