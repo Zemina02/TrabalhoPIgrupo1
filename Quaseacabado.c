@@ -541,7 +541,7 @@ int* simularJogo(dadosdasequipas equipasEDados[NUM_EQUIPAS], jogadores jogadores
 
 		// Intervalo
 		if (tempo == 45) {
-			printf("\nIntervalo! Pressione Enter para continuar o jogo...\n");
+			printf("\nIntervalo!\n");
 			printf("Deseja trocar a tática? (s/n): ");
 			char resposta;
 			scanf(" %c", &resposta);
@@ -568,26 +568,26 @@ int* simularJogo(dadosdasequipas equipasEDados[NUM_EQUIPAS], jogadores jogadores
 		printf("Erro ao alocar memória para jogos.\n");
 		exit(1);
 	}
-	resultadoegolos[0] = golosEquipa;
-	resultadoegolos[1] = golosAdversario;
+	*resultadoegolos = golosEquipa;
+	*(resultadoegolos + 1) = golosAdversario;
 
 	if (golosEquipa > golosAdversario) {
 		printf("A equipa %s venceu!\n", equipasEDados[equipaSelecionada].equipa);
-		resultadoegolos[2] = 1; // Vitória
+		*(resultadoegolos+2) = 1; // Vitória
 	}
 	else if (golosEquipa < golosAdversario) {
 		printf("A equipa %s venceu!\n", equipasEDados[equipaAdversaria].equipa);
-		resultadoegolos[2] = -1; // Derrota
+		*(resultadoegolos + 2) = -1; // Derrota
 	}
 	else {
 		printf("O jogo terminou em empate!\n");
-		resultadoegolos[2] = 0; // Empate
+		*(resultadoegolos + 2) = 0; // Empate
 	}
 	// Atualiza os fundos da equipa com base no resultado
 	atualizarFundosPorResultado(equipaSelecionada, equipasEDados, resultadoegolos[2]);
 
-	free(resultadoegolos); // Libere a memória alocada
 	return resultadoegolos;
+	free(resultadoegolos); // Libere a memória alocada
 }
 
 int calcularPoderAtaque(jogadores equipa[NUM_JOGADORES]) {
@@ -811,6 +811,13 @@ int main() {
 		comprarJogadores(equipasEDados, jogadoresPorEquipa, equipaSelecionada);
 
 
+		printf("\n\nTabela de Resultados da tua equipa\n\n");
+		printf("Numero de jogos: %i\n", tabela.numerodejogos);
+		printf("Numero de Vitorias: %i\n", tabela.numerodevitorias);
+		printf("Numero de Derrotas: %i\n", tabela.numerodederrotas);
+		printf("Numero de Empates: %i\n", tabela.numerodeempates);
+		printf("Numero de golos: %i\n", tabela.numerodegolos);
+		printf("Numero de golos sofridos: %i\n", tabela.numerodesofridos);
 
 		// Pergunta ao jogador se deseja criar um novo calendário ou sair
 		char opcao;
@@ -831,4 +838,3 @@ int main() {
 
 	return 0;
 }
-
