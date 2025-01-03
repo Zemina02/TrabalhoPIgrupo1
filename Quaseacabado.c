@@ -197,7 +197,7 @@ int gerarFatorAleatorio()
 
 int gerarFatorContraatake(char posicao[10])
 {
-    int num = 0;
+    int num;
     if (strcmp(posicao, "Defesa") == 0) { num = 0; }
     else if (strcmp(posicao, "Meio-campo") == 0) { num = 1; }
     else if (strcmp(posicao, "Ataque") == 0) { num = 2; }
@@ -343,7 +343,7 @@ int main()
     // cria dados para 18 equipas e jogadores para cada
     dadosdasequipas equipasEDados[NUM_EQUIPAS];
     jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES]; // 20 jogadores por equipa
-    tabbeladeresultados tabela;
+    tabbeladeresultados tabela = {0};
 
     // Abre o ficheiro "Equipas.txt"
     FILE* equipas = fopen("Equipas.txt", "r");
@@ -398,19 +398,21 @@ int main()
     } while (continuar == 's' || continuar == 'S');*/
 
     printf("Primeira Jornada-----------------------------------------------------------------------------------");
+    printf("\nPressione Enter para continuar...\n");
+    while (getchar() != '\n');
     for(int c = 0; c < 9; c++){
          if(primeirosjogos[c][0] == equipaSelecionada){
             int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, primeirosjogos[c][1]);
             tabela.numerodejogos++;
-            tabela.numerodegolos += *resultados;
-            tabela.numerodesofridos += *(resultados + 1);
-            if(*(resultados+2) == 1){
+            tabela.numerodegolos += resultados[0];
+            tabela.numerodesofridos += resultados[1];
+            if(resultados[2] == 1){
                 tabela.numerodevitorias++;
             }
-            else if (*(resultados + 2) == -1) {
+            else if (resultados[2] == -1) {
                 tabela.numerodederrotas++;
             }
-            else if (*(resultados + 2) == 0) {
+            else if (resultados[2] == 0) {
                 tabela.numerodeempates++;
             }
          }
@@ -418,53 +420,57 @@ int main()
          {
                  int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, primeirosjogos[c][0]);
                  tabela.numerodejogos++;
-                 tabela.numerodegolos += *resultados;
-                 tabela.numerodesofridos += *(resultados+1);
-                 if (*(resultados + 2) == 1) {
+                 tabela.numerodegolos += resultados[0];
+                 tabela.numerodesofridos += resultados[1];
+                 if (resultados[2] == 1) {
                      tabela.numerodevitorias++;
                  }
-                 else if (*(resultados + 2) == -1) {
+                 else if (resultados[2] == -1) {
                      tabela.numerodederrotas++;
                  }
-                 else if (*(resultados + 2) == 0) {
+                 else if (resultados[2] == 0) {
                      tabela.numerodeempates++;
                  }
          }
     }
     printf("Segunda Jornada-----------------------------------------------------------------------------------");
+    printf("\nPressione Enter para continuar...\n");
+    while (getchar() != '\n');
     for (int c = 0; c < 9; c++) {
         if (segundojogos[c][0] == equipaSelecionada) {
             int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, segundojogos[c][1]);
             tabela.numerodejogos++;
-            tabela.numerodegolos += *resultados;
-            tabela.numerodesofridos += *(resultados+1);
-            if (*(resultados+2) == 1) {
+            tabela.numerodegolos += resultados[0];
+            tabela.numerodesofridos += resultados[1];
+            if (resultados[2] == 1) {
                 tabela.numerodevitorias++;
             }
-            else if (*(resultados+2) == -1) {
+            else if (resultados[2] == -1) {
                 tabela.numerodederrotas++;
             }
-            else if (*(resultados+2) == 0) {
+            else if (resultados[2] == 0) {
                 tabela.numerodeempates++;
             }
         }
         else if (segundojogos[c][1] == equipaSelecionada){ 
                 int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, segundojogos[c][0]);
                 tabela.numerodejogos++;
-                tabela.numerodegolos += *resultados;
-                tabela.numerodesofridos += *(resultados+1);
-                if (*(resultados+2) == 1) {
+                tabela.numerodegolos += resultados[0];
+                tabela.numerodesofridos += resultados[1];
+                if (resultados[2] == 1) {
                     tabela.numerodevitorias++;
                 }
-                else if (*(resultados+2) == -1) {
+                else if (resultados[2] == -1) {
                     tabela.numerodederrotas++;
                 }
-                else if (*(resultados+2) == 0) {
+                else if (resultados[2] == 0) {
                     tabela.numerodeempates++;
                 }
         }
     }
     printf("Terceira Jornada-----------------------------------------------------------------------------------");
+    printf("\nPressione Enter para continuar...\n");
+    while (getchar() != '\n');
     for (int c = 0; c < 9; c++) {
         if (terceirojogos[c][0] == equipaSelecionada) {
             int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, terceirojogos[c][1]);
@@ -484,18 +490,21 @@ int main()
         else if (terceirojogos[c][1] == equipaSelecionada) {
                 int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, terceirojogos[c][0]);
                 tabela.numerodejogos++;
-                tabela.numerodegolos += *resultados;
-                tabela.numerodesofridos += *(resultados+1);
-                if (*(resultados + 2) == 1) {
+                tabela.numerodegolos += resultados[0];
+                tabela.numerodesofridos += resultados[1];
+                if (resultados[2] == 1) {
                     tabela.numerodevitorias++;
                 }
-                else if (*(resultados + 2) == -1) {
+                else if (resultados[2] == -1) {
                     tabela.numerodederrotas++;
                 }
-                else if (*(resultados + 2) == 0) {
+                else if (resultados[2] == 0) {
                     tabela.numerodeempates++;
                 }
         }
     }
+    printf("\n\nTabela dos resoltados finas da tua equipa\n\n");
+    printf("Numero de Jogos: %i\nNumero de Vitorias: %i\nNumero de Derrotas: %i\nNumero de Empates: %i\nNumero de Golos: %i\nNumero de Golos Sofridos: %i", tabela.numerodejogos, tabela.numerodevitorias, tabela.numerodederrotas, tabela.numerodeempates, tabela.numerodegolos, tabela.numerodesofridos);
+
     return 0;
 }
