@@ -129,7 +129,14 @@ void atualizarFundosPorResultado(int equipaIndex, dadosdasequipas equipasEDados[
 int** criarCalendario(dadosdasequipas equipasEDados[NUM_EQUIPAS]) 
 {
     int equipasnumeros[18] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
-    int jogos[9][2]; // Matriz dos jogos
+    int** jogos = malloc(9 * sizeof(int*));
+    for (int i = 0; i < 9; i++) {
+        jogos[i] = malloc(2 * sizeof(int));
+    }
+    if (jogos == NULL) {
+        printf("Erro ao alocar memória para jogos.\n");
+        exit(1);
+    }
     int equipa1 = rand() % NUM_EQUIPAS;
     int equipa2 = rand() % NUM_EQUIPAS;
 
@@ -153,6 +160,8 @@ int** criarCalendario(dadosdasequipas equipasEDados[NUM_EQUIPAS])
     {
         printf(" jogo numero %i : %s vs %s\n", j+1, equipasEDados[jogos[j][0]].equipa, equipasEDados[jogos[j][1]].equipa);
     }
+
+
     return jogos;
 }
 
@@ -183,26 +192,27 @@ int calcularPoderDefesa(jogadores equipa[NUM_JOGADORES])
 
 int gerarFatorAleatorio()
 {
-        return rand() % 16 ; // Gera um número entre -1 e 21 
+    return rand() % 6; // Gera um número entre 0 e 5
 }
-int gerarFatorContraatake(char* posicao)
+
+int gerarFatorContraatake(char posicao[10])
 {
-    char* localdeperdadabola = posicao;
     int num = 0;
-    if (strcmp(localdeperdadabola, "Defesa")) { num = 0; }
-    else if (strcmp(localdeperdadabola, "Meio-campo")) { num = 1; }
-    else if (strcmp(localdeperdadabola, "Ataque")) { num = 2; }
+    if (strcmp(posicao, "Defesa") == 0) { num = 0; }
+    else if (strcmp(posicao, "Meio-campo") == 0) { num = 1; }
+    else if (strcmp(posicao, "Ataque") == 0) { num = 2; }
+
     switch (num) {
     case 0:
-        return rand() % 16; // Gera um número entre -1 e 15
+        return rand() % 16; // Gera um número entre 0 e 15
     case 1:
-        return rand() % 11; // Gera um número entre -1 e 11 
+        return rand() % 11; // Gera um número entre 0 e 10 
     case 2:
-        return rand() % 6; // Gera um número entre -1 e 6
+        return rand() % 6; // Gera um número entre 0 e 5
     }
 }
 
-const char* determinarLocalPerdaBola()
+char* determinarLocalPerdaBola()
 {
     int random = rand() % 3;
     switch (random) {
@@ -221,7 +231,7 @@ int gerirAtaque(jogadores equipa[NUM_JOGADORES], jogadores adversarios[NUM_JOGAD
     int fatorAleatorio = gerarFatorAleatorio();
     if (Suprise == true)
     {
-        int fatorAleatorio = gerarFatorContraatake(*position);
+        fatorAleatorio = gerarFatorContraatake(position);
     }
 
     printf("Poder de Ataque: %d\n", poderAtaque);
@@ -231,14 +241,11 @@ int gerirAtaque(jogadores equipa[NUM_JOGADORES], jogadores adversarios[NUM_JOGAD
     int resultado = (poderAtaque + fatorAleatorio) - poderDefesaAdversaria;
 
     if (resultado > 0) {
-        printf("Ataque bem-sucedido! Golo marcado.\n");
         return 1; // Ataque bem-sucedido
     }
     else {
         return 0; // Ataque falhou
     }
-
-    printf("Tempo restante do jogo: %d minutos.\n", tempoRestante);
 }
 
 int* simularJogo(dadosdasequipas equipasEDados[NUM_EQUIPAS], jogadores jogadoresPorEquipa[NUM_EQUIPAS][NUM_JOGADORES], int equipaSelecionada, int equipaAdversaria) {
@@ -247,24 +254,22 @@ int* simularJogo(dadosdasequipas equipasEDados[NUM_EQUIPAS], jogadores jogadores
 
     int golosEquipa = 0;
     int golosAdversario = 0;
-    int posseDeBola = equipaSelecionada; //equipaSelecionada , equipaAdversaria
-    int resultadoAtaque = 0;
+    int posseDeBola = equipaSelecionada;
 
     // Simulação de 90 minutos de jogo
-    for (int tempo = 9; tempo <= 90; tempo += 9) { // Simula em intervalos de 9 minutos
+    for (int tempo = 9; tempo <= 90; tempo += 9) {
         printf("\nMinuto: %d\n", tempo);
 
-        // JJOgadas da equipa do joigador-------------------------------------------------------------------
         if (posseDeBola == equipaSelecionada) {
             printf("Bola da tua equipa\n");
             int resultadoAtaque = gerirAtaque(jogadoresPorEquipa[equipaSelecionada], jogadoresPorEquipa[equipaAdversaria], 90 - tempo, false, "Meio-Campo");
             if (resultadoAtaque > 0) {
+                printf("Ataque bem-sucedido! Golo marcado.\n");
                 golosEquipa++;
                 posseDeBola = equipaAdversaria;
             }
             else {
-                // Se o ataque falhar, o adversário pode ter uma chance de ataque
-                const char* localPerda = determinarLocalPerdaBola();
+                char* localPerda = determinarLocalPerdaBola();
                 printf("Ataque falhou. Perda de bola na zona: %s. CONTRA_ATAQUE\n", localPerda);
                 int resultadoDefesa = gerirAtaque(jogadoresPorEquipa[equipaAdversaria], jogadoresPorEquipa[equipaSelecionada], 90 - tempo, true, localPerda);
                 if (resultadoDefesa > 0) {
@@ -272,41 +277,39 @@ int* simularJogo(dadosdasequipas equipasEDados[NUM_EQUIPAS], jogadores jogadores
                 }
             }
         }
-
-            //jogadas da equipa oponente---------------------------------------------------------------------
-        else if(posseDeBola == equipaAdversaria){
+        else if (posseDeBola == equipaAdversaria) {
             printf("Bola dos oponentes\n");
             int resultadoAtaque = gerirAtaque(jogadoresPorEquipa[equipaAdversaria], jogadoresPorEquipa[equipaSelecionada], 90 - tempo, false, "Meio-Campo");
-        
-            // Se o ataque for bem-sucedido, incrementa os golos
-            if (resultadoAtaque > 0){
-            golosAdversario++;
-            posseDeBola = equipaSelecionada;
+            if (resultadoAtaque > 0) {
+                printf("Ataque bem-sucedido! Golo marcado.\n");
+                golosAdversario++;
+                posseDeBola = equipaSelecionada;
             }
-            else{
-            // Se o ataque falhar, o adversário pode ter uma chance de ataque
-            const char* localPerda = determinarLocalPerdaBola();
-            printf("Ataque falhou. Perda de bola na zona: %s. CONTRA_ATAQUE\n", localPerda);
-            int resultadoDefesa = gerirAtaque(jogadoresPorEquipa[equipaSelecionada], jogadoresPorEquipa[equipaAdversaria], 90 - tempo, true, localPerda);
-            if (resultadoDefesa > 0) {
-                golosEquipa++;
-            }
+            else {
+                char* localPerda = determinarLocalPerdaBola();
+                printf("Ataque falhou. Perda de bola na zona: %s. CONTRA_ATAQUE\n", localPerda);
+                int resultadoDefesa = gerirAtaque(jogadoresPorEquipa[equipaSelecionada], jogadoresPorEquipa[equipaAdversaria], 90 - tempo, true, localPerda);
+                if (resultadoDefesa > 0) {
+                    golosEquipa++;
+                }
             }
         }
 
-
-        // Verifica se é minuto 45 para entrar em intervalo------------------------------------------------------
+        // Intervalo
         if (tempo == 45) {
             printf("\nIntervalo! Pressione Enter para continuar o jogo...\n");
-            getchar(); // Espera pelo input do utilizador
-            getchar(); // Captura o Enter
+            while (getchar() != '\n');
         }
     }
 
     printf("\nResultado Final: %s %d - %d %s\n", equipasEDados[equipaSelecionada].equipa, golosEquipa, golosAdversario, equipasEDados[equipaAdversaria].equipa);
 
     // Determinar vencedor e atualizar fundos
-    int resultadoegolos[3];
+    int* resultadoegolos = malloc(3 * sizeof(int));
+    if (resultadoegolos == NULL) {
+        printf("Erro ao alocar memória para jogos.\n");
+        exit(1);
+    }
     resultadoegolos[0] = golosEquipa;
     resultadoegolos[1] = golosAdversario;
 
@@ -324,11 +327,14 @@ int* simularJogo(dadosdasequipas equipasEDados[NUM_EQUIPAS], jogadores jogadores
     }
     // Atualiza os fundos da equipa com base no resultado
     atualizarFundosPorResultado(equipaSelecionada, equipasEDados, resultadoegolos[2]);
+
+    free(resultadoegolos); // Libere a memória alocada
     return resultadoegolos;
 }
 
 
-void main() 
+
+int main() 
 {
     setlocale(LC_ALL, "Portuguese");
 
@@ -385,11 +391,11 @@ void main()
     printf("Terceira Jornada-----------------------------------------\n");
     int** terceirojogos = criarCalendario(equipasEDados);
     
-    char continuar;
+   /* char continuar;
     do {
         printf("\nDeseja continuar? (s/n): ");
         scanf(" %c", &continuar);
-    } while (continuar == 's' || continuar == 'S');
+    } while (continuar == 's' || continuar == 'S');*/
 
     printf("Primeira Jornada-----------------------------------------------------------------------------------");
     for(int c = 0; c < 9; c++){
@@ -408,8 +414,8 @@ void main()
                 tabela.numerodeempates++;
             }
          }
-         else if (primeirosjogos[c][1] == equipaSelecionada) {
-             if (primeirosjogos[c][0] == equipaSelecionada) {
+         else if (primeirosjogos[c][1] == equipaSelecionada) 
+         {
                  int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, primeirosjogos[c][0]);
                  tabela.numerodejogos++;
                  tabela.numerodegolos += *resultados;
@@ -423,7 +429,6 @@ void main()
                  else if (*(resultados + 2) == 0) {
                      tabela.numerodeempates++;
                  }
-             }
          }
     }
     printf("Segunda Jornada-----------------------------------------------------------------------------------");
@@ -443,8 +448,7 @@ void main()
                 tabela.numerodeempates++;
             }
         }
-        else if (segundojogos[c][1] == equipaSelecionada) {
-            if (segundojogos[c][0] == equipaSelecionada) {
+        else if (segundojogos[c][1] == equipaSelecionada){ 
                 int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, segundojogos[c][0]);
                 tabela.numerodejogos++;
                 tabela.numerodegolos += *resultados;
@@ -458,7 +462,6 @@ void main()
                 else if (*(resultados+2) == 0) {
                     tabela.numerodeempates++;
                 }
-            }
         }
     }
     printf("Terceira Jornada-----------------------------------------------------------------------------------");
@@ -479,7 +482,6 @@ void main()
             }
         }
         else if (terceirojogos[c][1] == equipaSelecionada) {
-            if (terceirojogos[c][0] == equipaSelecionada) {
                 int* resultados = simularJogo(equipasEDados, jogadoresPorEquipa, equipaSelecionada, terceirojogos[c][0]);
                 tabela.numerodejogos++;
                 tabela.numerodegolos += *resultados;
@@ -493,7 +495,7 @@ void main()
                 else if (*(resultados + 2) == 0) {
                     tabela.numerodeempates++;
                 }
-            }
         }
     }
+    return 0;
 }
